@@ -1,0 +1,29 @@
+.container {
+	display: grid;
+	gap: 8px;
+
+	margin-bottom: 20px;
+}
+
+.input {
+	width: 100%;
+	font-size: 16px;
+	border-radius: 10px;
+	padding: 10px;
+	border: 2px solid #CCC;
+	background: #FFF;
+	box-shadow: 0px 3px 25px 0px rgba(0, 0, 0, 0.09);
+	outline: 2px solid #66666600;
+
+	transition: 0.2s ease-in-out;
+}
+
+.input::placeholder {
+	opacity: 30%;
+}
+
+.input:focus {
+	outline: 2px solid #666;
+	border: 2px solid #666;
+	opacity: 100%;
+}

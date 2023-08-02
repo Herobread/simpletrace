@@ -1,0 +1,28 @@
+.container {
+	width: 100wv;
+}
+
+.formContainer {
+	margin: auto;
+	width: 100%;
+	max-width: 600px;
+
+}
+
+.image {
+	display: none;
+}
+
+@media screen and (min-width:1024px) {
+	.image {
+		width: 100%;
+		height: 100vh;
+		display: unset;
+		object-fit: cover;
+	}
+
+	.container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+}
