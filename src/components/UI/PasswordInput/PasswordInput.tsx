@@ -4,6 +4,7 @@ import s from './PasswordInput.module.css'
 import hide from '@/../public/icons/Hide.svg'
 import show from '@/../public/icons/Eye.svg'
 import Image from 'next/image'
+import cn from '@/lib/cn'
 
 export interface PasswordInputProps
 	extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -14,15 +15,25 @@ export interface PasswordInputProps
 const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
 	({ error, label, ...props }, ref) => {
 		const [isShown, setIsShown] = useState(false)
+
 		const { name } = props
+		const inputStyles = [s.input]
+		const labelStyles = []
+
+		if (error) {
+			inputStyles.push(s.errorInput)
+			labelStyles.push(s.errorLabel)
+		}
 
 		return (
 			<div className={s.container}>
-				<label htmlFor={name}>{label}</label>
+				<label htmlFor={name} className={cn(labelStyles)}>
+					{label}
+				</label>
 				<div className={s.passwordContainer}>
 					<input
 						type={isShown ? 'text' : 'password'}
-						className={s.input}
+						className={cn(inputStyles)}
 						{...props}
 					/>
 					<button
@@ -39,7 +50,7 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
 						)}
 					</button>
 				</div>
-				{error && <div>{error}</div>}
+				{error && <div className={s.error}>{error}</div>}
 			</div>
 		)
 	}

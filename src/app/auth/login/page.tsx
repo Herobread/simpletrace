@@ -44,6 +44,7 @@ export default function Login() {
 					label="Password"
 					placeholder="12345"
 					{...register('password')}
+					error="sadsadas das dsa fhjsdfh dsjka."
 				/>
 				<Paragraph>
 					Don&apos;t have an account?{' '}

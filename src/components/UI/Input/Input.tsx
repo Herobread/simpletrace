@@ -24,12 +24,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 				<label htmlFor={name} className={cn(labelStyles)}>
 					{label}
 				</label>
-				<input
-					type="text"
-					{...props}
-					ref={ref}
-					className={cn(inputStyles)}
-				/>
+				<input {...props} ref={ref} className={cn(inputStyles)} />
 				{error && <div className={s.error}>{error}</div>}
 			</div>
 		)
