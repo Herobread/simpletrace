@@ -2,6 +2,13 @@
 	width: 100wv;
 }
 
+.formWrapper {
+	width: 100%;
+	min-height: 100vh;
+
+	display: flex;
+}
+
 .formContainer {
 	margin: auto;
 	width: 100%;
