@@ -12,6 +12,7 @@ import { usernameValidationOptions } from '@/lib/validation/username'
 import Link from 'next/link'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { signIn } from 'next-auth/react'
 
 interface LoginInputs {
 	username: string
@@ -33,11 +34,9 @@ export default function Login() {
 
 		setError('')
 		setisLoading(true)
-		const waitTimeInMilliseconds = 3000
-		await new Promise((resolve) =>
-			setTimeout(resolve, waitTimeInMilliseconds)
-		)
-
+		signIn('credentials', {
+			...formData,
+		})
 		setisLoading(false)
 		setError('Example error. Only UI was made, so no functionality yet.')
 	}

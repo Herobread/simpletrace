@@ -12,8 +12,9 @@ import { usernameValidationOptions } from '@/lib/validation/username'
 import Link from 'next/link'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { signup } from './signup'
 
-interface RegisterInputs {
+export interface RegisterInputs {
 	username: string
 	password: string
 }
@@ -33,13 +34,14 @@ export default function Register() {
 
 		setError('')
 		setisLoading(true)
-		const waitTimeInMilliseconds = 5000
-		await new Promise((resolve) =>
-			setTimeout(resolve, waitTimeInMilliseconds)
-		)
+
+		try {
+			await signup(formData)
+		} catch (error: any) {
+			setError(error.message || 'An error has occured, try again later.')
+		}
 
 		setisLoading(false)
-		setError('Example error. Only UI was made, so no functionality yet.')
 	}
 
 	return (
