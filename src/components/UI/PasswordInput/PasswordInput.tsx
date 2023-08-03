@@ -34,6 +34,7 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
 					<input
 						type={isShown ? 'text' : 'password'}
 						className={cn(inputStyles)}
+						ref={ref}
 						{...props}
 					/>
 					<button
