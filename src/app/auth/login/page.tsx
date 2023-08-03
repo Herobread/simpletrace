@@ -6,6 +6,7 @@ import H1 from '@/components/UI/H1/H1'
 import Input from '@/components/UI/Input/Input'
 import Paragraph from '@/components/UI/Paragraph/Paragraph'
 import PasswordInput from '@/components/UI/PasswordInput/PasswordInput'
+import Margin from '@/components/layout/Margin/Margin'
 import { passwordValidationOptions } from '@/lib/validation/password'
 import { usernameValidationOptions } from '@/lib/validation/username'
 import Link from 'next/link'
@@ -38,12 +39,13 @@ export default function Login() {
 		)
 
 		setisLoading(false)
-		setError('There was an error loging in, try again later.')
+		setError('Example error. Only UI was made, so no functionality yet.')
 	}
 
 	return (
 		<div>
 			<H1>Login</H1>
+			<Margin height={20} />
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<Input
 					label="Username"
@@ -51,20 +53,24 @@ export default function Login() {
 					{...register('username', usernameValidationOptions)}
 					error={errors.username?.message}
 				/>
+				<Margin height={10} />
 				<PasswordInput
 					label="Password"
 					placeholder="12345"
 					{...register('password', passwordValidationOptions)}
 					error={errors.password?.message}
 				/>
+				<Margin height={10} />
 				<Paragraph>
 					Don&apos;t have an account?{' '}
 					<Link href={'/auth/register'}>Register</Link>.
 				</Paragraph>
-				<Error>{error}</Error>
+				<Margin height={10} />
 				<Button isLoading={isLoading} type="submit">
 					Login
 				</Button>
+				<Margin height={20} />
+				<Error>{error}</Error>
 			</form>
 		</div>
 	)

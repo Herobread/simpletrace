@@ -5,6 +5,8 @@ import hide from '@/../public/icons/Hide.svg'
 import show from '@/../public/icons/Eye.svg'
 import Image from 'next/image'
 import cn from '@/lib/cn'
+import { motion, AnimatePresence } from 'framer-motion'
+import { fadeAnimation } from '@/lib/animations/fade'
 
 export interface PasswordInputProps
 	extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -26,7 +28,7 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
 		}
 
 		return (
-			<div className={s.container}>
+			<>
 				<label htmlFor={name} className={cn(labelStyles)}>
 					{label}
 				</label>
@@ -51,8 +53,14 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
 						)}
 					</button>
 				</div>
-				{error && <div className={s.error}>{error}</div>}
-			</div>
+				<AnimatePresence>
+					{error && (
+						<motion.div className={s.error} {...fadeAnimation}>
+							{error}
+						</motion.div>
+					)}
+				</AnimatePresence>
+			</>
 		)
 	}
 )

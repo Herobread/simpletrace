@@ -1,6 +1,8 @@
 import { forwardRef } from 'react'
 import s from './Input.module.css'
 import cn from '@/lib/cn'
+import { motion, AnimatePresence } from 'framer-motion'
+import { fadeAnimation } from '@/lib/animations/fade'
 
 export interface InputProps
 	extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -20,12 +22,18 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 		}
 
 		return (
-			<div className={s.container}>
+			<div>
 				<label htmlFor={name} className={cn(labelStyles)}>
 					{label}
 				</label>
 				<input {...props} ref={ref} className={cn(inputStyles)} />
-				{error && <div className={s.error}>{error}</div>}
+				<AnimatePresence>
+					{error && (
+						<motion.div className={s.error} {...fadeAnimation}>
+							{error}
+						</motion.div>
+					)}
+				</AnimatePresence>
 			</div>
 		)
 	}
