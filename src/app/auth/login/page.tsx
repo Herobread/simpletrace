@@ -13,6 +13,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { signIn } from 'next-auth/react'
+import Protected from '@/components/auth/Protected/Protected'
 
 interface LoginInputs {
 	username: string
@@ -30,19 +31,25 @@ export default function Login() {
 	} = useForm<LoginInputs>()
 
 	const onSubmit = async (formData: LoginInputs) => {
-		console.log(formData)
-
 		setError('')
 		setisLoading(true)
-		signIn('credentials', {
+
+		const response = await signIn('credentials', {
 			...formData,
+			callbackUrl: '/projects',
+			redirect: false,
 		})
+
+		if (response?.error) {
+			setError(response?.error)
+		}
+
 		setisLoading(false)
-		setError('Example error. Only UI was made, so no functionality yet.')
 	}
 
 	return (
 		<div>
+			<Protected user="only-unauthenticated" redirectTo="/projects" />
 			<H1>Login</H1>
 			<Margin height={20} />
 			<form onSubmit={handleSubmit(onSubmit)}>

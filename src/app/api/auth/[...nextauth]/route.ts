@@ -30,7 +30,7 @@ export const authOptions: AuthOptions = {
 				if (user) {
 					return user
 				} else {
-					return null
+					throw new Error('Incorrect username or password.')
 				}
 			},
 		}),

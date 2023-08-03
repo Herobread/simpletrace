@@ -13,6 +13,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { signup } from './signup'
+import Protected from '@/components/auth/Protected/Protected'
 
 export interface RegisterInputs {
 	username: string
@@ -30,8 +31,6 @@ export default function Register() {
 	} = useForm<RegisterInputs>()
 
 	const onSubmit = async (formData: RegisterInputs) => {
-		console.log(formData)
-
 		setError('')
 		setisLoading(true)
 
@@ -46,6 +45,7 @@ export default function Register() {
 
 	return (
 		<div>
+			<Protected user="only-unauthenticated" redirectTo="/projects" />
 			<H1>Register</H1>
 			<Margin height={20} />
 			<form onSubmit={handleSubmit(onSubmit)}>
