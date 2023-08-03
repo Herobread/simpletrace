@@ -22,8 +22,25 @@
 	opacity: 30%;
 }
 
-.input:focus {
+.input:focus:has(not .errorInput) {
 	outline: 2px solid #666;
 	border: 2px solid #666;
 	opacity: 100%;
+}
+
+.errorInput {
+	border: 2px solid #F75252;
+	background: #FFE0E0;
+}
+
+.errorInput:focus {
+	outline: 3px solid #ffbbbb;
+}
+
+.error {
+	color: #F75252;
+}
+
+.errorLabel {
+	color: #F75252;
 }

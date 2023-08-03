@@ -38,6 +38,7 @@ export default function Login() {
 					label="Username"
 					placeholder="example"
 					{...register('username')}
+					error="sadsadas das dsa fhjsdfh dsjka."
 				/>
 				<PasswordInput
 					label="Password"
