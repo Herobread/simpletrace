@@ -22,15 +22,15 @@
 	opacity: 30%;
 }
 
-.input:focus:has(not .errorInput) {
+.input:focus {
 	outline: 2px solid #666;
 	border: 2px solid #666;
 	opacity: 100%;
 }
 
 .errorInput {
-	border: 2px solid #F75252;
-	background: #FFE0E0;
+	border: 2px solid #F75252 !important;
+	background: #FFE0E0 !important;
 }
 
 .errorInput:focus {
