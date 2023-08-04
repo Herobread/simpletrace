@@ -1,8 +1,8 @@
 import H1 from '@/components/UI/H1/H1'
+import AddProjectCard from '@/components/UI/projects/AddProjectCard/AddProjectCard'
 import ProjectCard from '@/components/UI/projects/ProjectCard/ProjectCard'
 import ProjectsGrid from '@/components/UI/projects/ProjectsGrid/ProjectsGrid'
 import Margin from '@/components/layout/Margin/Margin'
-import Link from 'next/link'
 
 export default function Projects() {
 	return (
@@ -12,6 +12,7 @@ export default function Projects() {
 			<Margin height={30} />
 
 			<ProjectsGrid>
+				<AddProjectCard />
 				<ProjectCard
 					id={'1'}
 					header="ABC Corporation"
