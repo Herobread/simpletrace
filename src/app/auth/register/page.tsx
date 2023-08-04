@@ -14,6 +14,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { signup } from './signup'
 import Protected from '@/components/auth/Protected/Protected'
+import { signIn } from 'next-auth/react'
 
 export interface RegisterInputs {
 	username: string
@@ -36,6 +37,12 @@ export default function Register() {
 
 		try {
 			await signup(formData)
+
+			await signIn('credentials', {
+				...formData,
+				redirect: false,
+				callbackUrl: '/projects',
+			})
 		} catch (error: any) {
 			setError(error.message || 'An error has occured, try again later.')
 		}
