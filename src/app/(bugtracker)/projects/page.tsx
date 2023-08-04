@@ -3,8 +3,11 @@ import AddProjectCard from '@/components/UI/projects/AddProjectCard/AddProjectCa
 import ProjectCard from '@/components/UI/projects/ProjectCard/ProjectCard'
 import ProjectsGrid from '@/components/UI/projects/ProjectsGrid/ProjectsGrid'
 import Margin from '@/components/layout/Margin/Margin'
+import getUserProjects from './getUserProjects'
 
-export default function Projects() {
+export default async function Projects() {
+	const projects = await getUserProjects()
+
 	return (
 		<>
 			<Margin height={50} />
@@ -13,20 +16,19 @@ export default function Projects() {
 
 			<ProjectsGrid>
 				<AddProjectCard />
-				<ProjectCard
-					id={'1'}
-					header="ABC Corporation"
-					description="Simple calculator app with many many bugs and few features."
-					open={1}
-					closed={6}
-				/>
-				<ProjectCard
-					id={'2'}
-					header="Project 2"
-					description="This is the second project description."
-					open={4}
-					closed={1}
-				/>
+				{projects.map((project) => {
+					const { description, id, name } = project
+					return (
+						<ProjectCard
+							closed={1}
+							open={30}
+							description={description || ''}
+							header={name}
+							id={id}
+							key={id}
+						/>
+					)
+				})}
 			</ProjectsGrid>
 		</>
 	)

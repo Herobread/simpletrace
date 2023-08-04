@@ -11,7 +11,10 @@ export default function NavBar() {
 						Trace
 					</div>
 				</Link>
-				<div className={s.right}>John smith</div>
+				<div className={s.right}>
+					<Link href="/projects">Projects</Link>
+					<div>John smith</div>
+				</div>
 			</div>
 		</>
 	)

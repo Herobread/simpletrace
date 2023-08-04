@@ -1,14 +1,16 @@
+'use client'
+
 import Image from 'next/image'
-import s from './Error.module.css'
+import s from './ErrorAlert.module.css'
 import danger from '@/../public/icons/Danger.svg'
 import { motion, AnimatePresence } from 'framer-motion'
 import { fadeAnimation } from '@/lib/animations/fade'
 
-interface ErrorProps {
+interface ErrorAlertProps {
 	children: React.ReactNode
 }
 
-export default function Error({ children }: ErrorProps) {
+export default function ErrorAlert({ children }: ErrorAlertProps) {
 	return (
 		<AnimatePresence>
 			{children && (

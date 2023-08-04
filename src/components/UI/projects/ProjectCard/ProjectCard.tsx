@@ -19,22 +19,23 @@ export default function ProjectCard({
 	closed,
 }: ProjectCardProps) {
 	return (
-		<Link href={'/projects'}>
+		<Link href={`/projects/${id}`}>
 			<CardBase>
 				<div className={s.container}>
 					<h2 className={s.header}>{header}</h2>
 					<p className={s.description}>{description}</p>
 					<div className={s.issues}>
 						<div>
-							<span className={s.bold}>{open} </span>
-							Open
-						</div>
-						<div className={s.closed}>
 							<span className={s.bold}>{closed} </span>
 							closed
 						</div>
+						<div className={s.open}>
+							<span className={s.bold}>{open} </span>
+							Open
+						</div>
 					</div>
-					<ProgressBar value={open} max={open + closed} />
+
+					<ProgressBar value={closed} max={open + closed} />
 				</div>
 			</CardBase>
 		</Link>

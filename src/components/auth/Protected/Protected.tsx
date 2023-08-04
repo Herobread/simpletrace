@@ -2,6 +2,7 @@
 
 import { redirect } from 'next/navigation'
 import { useSession } from 'next-auth/react'
+import Spinner from '@/components/UI/Spinner/Spinner'
 
 interface ProtectedProps {
 	user: 'only-unauthenticated' | 'only-authenticated'
@@ -13,7 +14,7 @@ export default function Protected({ user, redirectTo }: ProtectedProps) {
 	const isAuthenticated = !!session
 
 	if (status == 'loading') {
-		return
+		return <Spinner color="black" />
 	}
 
 	if (!isAuthenticated && user == 'only-authenticated') {

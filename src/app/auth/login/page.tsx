@@ -1,7 +1,6 @@
 'use client'
 
 import Button from '@/components/UI/Button/Button'
-import Error from '@/components/UI/Error/Error'
 import H1 from '@/components/UI/H1/H1'
 import Input from '@/components/UI/Input/Input'
 import Paragraph from '@/components/UI/Paragraph/Paragraph'
@@ -14,6 +13,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { signIn } from 'next-auth/react'
 import Protected from '@/components/auth/Protected/Protected'
+import ErrorAlert from '@/components/UI/ErrorAlert/ErrorAlert'
 
 interface LoginInputs {
 	username: string
@@ -76,7 +76,7 @@ export default function Login() {
 					Login
 				</Button>
 				<Margin height={20} />
-				<Error>{error}</Error>
+				<ErrorAlert>{error}</ErrorAlert>
 			</form>
 		</div>
 	)
