@@ -1,3 +1,4 @@
+import ProjectBugInfoPanel from '@/components/UI/ProjectBugInfoPanel/ProjectBugInfoPanel'
 import getProjectData from './getProjectData'
 import ErrorAlert from '@/components/UI/ErrorAlert/ErrorAlert'
 
@@ -11,7 +12,17 @@ export default async function GenerateProjectHeader({
 	try {
 		const projectData = await getProjectData(id)
 
-		return <div>{JSON.stringify(projectData)}</div>
+		const { description, name } = projectData
+
+		return (
+			<ProjectBugInfoPanel
+				id={id}
+				closed={10}
+				open={20}
+				description={description}
+				header={name}
+			/>
+		)
 	} catch (error: any) {
 		return <ErrorAlert>{error.message}</ErrorAlert>
 	}

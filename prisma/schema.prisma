@@ -48,5 +48,6 @@ model Issue {
   title       String
   description String?
   isOpen      Boolean  @default(true)
-  project     Project  @relation(fields: [id], references: [id])
+  project     Project  @relation(fields: [projectId], references: [id])
+  projectId   String
 }
