@@ -12,13 +12,13 @@ export default async function GenerateProjectHeader({
 	try {
 		const projectData = await getProjectData(id)
 
-		const { description, name } = projectData
+		const { description, name, open, closed } = projectData
 
 		return (
 			<ProjectBugInfoPanel
 				id={id}
-				closed={10}
-				open={20}
+				closed={closed}
+				open={open}
 				description={description}
 				header={name}
 			/>

@@ -33,7 +33,6 @@ export default async function newIssue(projectId: string, data: NewIssueProps) {
 	} catch (error: any) {
 		console.error(error)
 
-		throw new Error(JSON.stringify(error))
 		throw new Error('Something went wrong, try again later.')
 	}
 }

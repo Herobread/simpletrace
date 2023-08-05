@@ -7,6 +7,20 @@ export default async function getProjectData(id: string) {
 		throw new Error(`Id wasn't specified`)
 	}
 
+	const openIssues = await prisma.issue.count({
+		where: {
+			isOpen: true,
+			projectId: id,
+		},
+	})
+
+	const closedIssues = await prisma.issue.count({
+		where: {
+			isOpen: false,
+			projectId: id,
+		},
+	})
+
 	const projectData = await prisma.project.findUnique({
 		where: {
 			id,
@@ -17,5 +31,9 @@ export default async function getProjectData(id: string) {
 		throw new Error(`Project with id ${id} not found.`)
 	}
 
-	return projectData
+	return {
+		open: openIssues,
+		closed: closedIssues,
+		...projectData,
+	}
 }
