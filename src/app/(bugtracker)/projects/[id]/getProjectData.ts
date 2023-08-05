@@ -1,6 +1,7 @@
 'use server'
 
 import { prisma } from '@/lib/prisma'
+import { revalidatePath } from 'next/cache'
 
 export default async function getProjectData(id: string) {
 	if (!id) {
@@ -30,6 +31,9 @@ export default async function getProjectData(id: string) {
 	if (!projectData) {
 		throw new Error(`Project with id ${id} not found.`)
 	}
+
+	revalidatePath('/')
+	revalidatePath('/projects/*')
 
 	return {
 		open: openIssues,

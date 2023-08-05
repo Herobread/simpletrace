@@ -32,7 +32,7 @@ export default async function newIssue(projectId: string, data: NewIssueProps) {
 			},
 		})
 
-		revalidatePath(`/projects/${projectId}`)
+		revalidatePath('/projects/[id]')
 
 		return
 	} catch (error: any) {

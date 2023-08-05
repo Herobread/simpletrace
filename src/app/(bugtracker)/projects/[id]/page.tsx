@@ -1,5 +1,3 @@
-'use server'
-
 import Spinner from '@/components/UI/Spinner/Spinner'
 import Margin from '@/components/layout/Margin/Margin'
 import { Suspense } from 'react'
@@ -8,6 +6,7 @@ import H2 from '@/components/UI/H2/H2'
 import Issue from '@/components/UI/Issue/Issue'
 import GenerateOpenIssues from './GenerateOpenIssues'
 import GenerateClosedIssues from './GenerateClosedIssues'
+import getProjectData from './getProjectData'
 
 interface ProjectProps {
 	params: {
@@ -17,6 +16,8 @@ interface ProjectProps {
 
 export default async function Project({ params }: ProjectProps) {
 	const { id } = params
+
+	const data = await getProjectData(id)
 
 	return (
 		<div>

@@ -41,8 +41,8 @@ export default function ProjectBugInfoPanel({
 						number={open + closed}
 						description="Total"
 					/>
-					<NumDescription number={open} description="Open" />
 					<NumDescription number={closed} description="Closed" />
+					<NumDescription number={open} description="Open" />
 				</div>
 			</div>
 			<Margin height={10} />

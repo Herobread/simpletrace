@@ -2,13 +2,12 @@
 
 import Input from '@/components/UI/Input/Input'
 import { useForm } from 'react-hook-form'
-import { projectNameValidationOptions } from '@/lib/validation/projectName'
 import Button from '@/components/UI/Button/Button'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Margin from '@/components/layout/Margin/Margin'
 import ErrorAlert from '@/components/UI/ErrorAlert/ErrorAlert'
-import newIssue from '@/app/actions/newIssue'
+import newIssue from '@/app/(bugtracker)/projects/[id]/new-issue/newIssue'
 import { issueNameValidationOptions } from '@/lib/validation/issueName'
 
 export interface NewIssueInputs {
@@ -37,6 +36,7 @@ export default function NewIssueForm({ id }: NewIssueFormProps) {
 
 		try {
 			await newIssue(id, data)
+			router.refresh()
 			router.push('')
 		} catch (error: any) {
 			setError(error.message)

@@ -20,7 +20,7 @@ export default async function updateIssue(id: string, data: Issue) {
 			},
 		})
 
-		revalidatePath('/projects/*/*')
+		revalidatePath('/projects/[id]')
 
 		return
 	} catch (error: any) {
