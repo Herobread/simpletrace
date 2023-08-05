@@ -25,7 +25,24 @@ export default async function getUserProjects() {
 			},
 		})
 
-		return projects
+		const formattedData = projects.map((project) => {
+			const openIssues = project.issues.filter(
+				(issue) => issue.isOpen
+			).length
+			const closedIssues = project.issues.filter(
+				(issue) => !issue.isOpen
+			).length
+
+			return {
+				id: project.id,
+				name: project.name,
+				description: project.description,
+				totalOpenIssues: openIssues,
+				totalClosedIssues: closedIssues,
+			}
+		})
+
+		return formattedData
 	} catch (error: any) {
 		throw new Error('There was an error loading projects. Try again later.')
 	}

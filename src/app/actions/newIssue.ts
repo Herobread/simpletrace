@@ -1,6 +1,7 @@
 'use server'
 
 import { prisma } from '@/lib/prisma'
+import { revalidatePath } from 'next/cache'
 
 interface NewIssueProps {
 	description?: string | null
@@ -30,6 +31,10 @@ export default async function newIssue(projectId: string, data: NewIssueProps) {
 				},
 			},
 		})
+
+		revalidatePath(`/projects/${projectId}`)
+
+		return
 	} catch (error: any) {
 		console.error(error)
 

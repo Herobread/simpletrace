@@ -46,7 +46,7 @@ export default function ProjectBugInfoPanel({
 				</div>
 			</div>
 			<Margin height={10} />
-			<ProgressBar value={open} max={open + closed} />
+			<ProgressBar value={closed} max={open + closed} />
 		</div>
 	)
 }

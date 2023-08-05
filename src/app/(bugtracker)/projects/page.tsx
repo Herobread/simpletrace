@@ -17,11 +17,17 @@ export default async function Projects() {
 			<ProjectsGrid>
 				<AddProjectCard />
 				{projects.map((project) => {
-					const { description, id, name } = project
+					const {
+						description,
+						id,
+						name,
+						totalClosedIssues,
+						totalOpenIssues,
+					} = project
 					return (
 						<ProjectCard
-							closed={1}
-							open={30}
+							closed={totalClosedIssues}
+							open={totalOpenIssues}
 							description={description || ''}
 							header={name}
 							id={id}
