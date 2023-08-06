@@ -1,6 +1,10 @@
 import Margin from '@/components/layout/Margin/Margin'
 import getIssueInfo from './getIssueInfo'
 import UpdateStatusButton from './UpdateStatusButton'
+import { Suspense } from 'react'
+import Spinner from '@/components/UI/Spinner/Spinner'
+import H1 from '@/components/UI/H1/H1'
+import Paragraph from '@/components/UI/Paragraph/Paragraph'
 
 interface IssueViewProps {
 	params: {
@@ -17,7 +21,14 @@ export default async function IssueView({ params }: IssueViewProps) {
 	return (
 		<div>
 			<Margin height={50} />
-			{JSON.stringify(issueData)}
+			<Suspense fallback={<Spinner color="black" />}>
+				<H1>{issueData?.title}</H1>
+				<Margin height={30} />
+				<Paragraph>{issueData?.description}</Paragraph>
+				<Margin height={20} />
+				{/* {JSON.stringify(issueData)} */}
+				{/* update to fetch data inside */}
+			</Suspense>
 			<UpdateStatusButton
 				isOpen={issueData?.isOpen!}
 				issueId={issueData?.id!}

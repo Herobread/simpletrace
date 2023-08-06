@@ -4,6 +4,7 @@ import ErrorAlert from '@/components/UI/ErrorAlert/ErrorAlert'
 import getIssues from './getIssues'
 import Issue from '@/components/UI/Issue/Issue'
 import IssueContainer from '@/components/UI/IssueContainer/IssueContainer'
+import Paragraph from '@/components/UI/Paragraph/Paragraph'
 
 interface GenerateOpenIssuesProps {
 	id: string
@@ -14,6 +15,14 @@ export default async function GenerateOpenIssues({
 }: GenerateOpenIssuesProps) {
 	try {
 		const openIssues = await getIssues(id, true)
+
+		if (!openIssues.length) {
+			return (
+				<Paragraph>
+					No issues found, add some issues by pressing button above.
+				</Paragraph>
+			)
+		}
 
 		return (
 			<IssueContainer>

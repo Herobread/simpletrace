@@ -15,6 +15,7 @@ import { signup } from './signup'
 import Protected from '@/components/auth/Protected/Protected'
 import { signIn } from 'next-auth/react'
 import ErrorAlert from '@/components/UI/ErrorAlert/ErrorAlert'
+import InfoAlert from '@/components/UI/InfoAlert/InfoAlert'
 
 export interface RegisterInputs {
 	username: string
@@ -54,6 +55,11 @@ export default function Register() {
 		<div>
 			<Protected user="only-unauthenticated" redirectTo="/projects" />
 			<H1>Register</H1>
+			<Margin height={20} />
+			<InfoAlert>
+				Passwords are not encrypted yet, because im lazy.
+				<br /> Select passwords like <code>123456</code> for testing.
+			</InfoAlert>
 			<Margin height={20} />
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<Input

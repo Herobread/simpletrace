@@ -28,7 +28,7 @@ export default function UpdateStatusButton({
 
 	return (
 		<Button isLoading={isLoading} onClick={onClick}>
-			update
+			{isOpen ? 'Close' : 'Re-open'}
 		</Button>
 	)
 }

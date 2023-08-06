@@ -20,12 +20,25 @@ export default async function createProject(data: CreateNewProjectInputs) {
 	}
 
 	try {
+		const userId = session.user.id
+
 		const project = await prisma.project.create({
 			data: {
 				name,
 				description,
 				users: {
-					connect: { id: session?.user.id },
+					connect: { id: userId },
+				},
+			},
+		})
+
+		await prisma.user.update({
+			where: {
+				id: userId,
+			},
+			data: {
+				projectsNumber: {
+					increment: 1,
 				},
 			},
 		})
