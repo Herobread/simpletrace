@@ -3,10 +3,10 @@ import Margin from '@/components/layout/Margin/Margin'
 import { Suspense } from 'react'
 import GenerateProjectHeader from './GenerateProjectHeader'
 import H2 from '@/components/UI/H2/H2'
-import Issue from '@/components/UI/Issue/Issue'
 import GenerateOpenIssues from './GenerateOpenIssues'
 import GenerateClosedIssues from './GenerateClosedIssues'
-import getProjectData from './getProjectData'
+import ProjectBugInfoPanelSkeleton from '@/components/UI/ProjectBugInfoPanel/ProjectBugInfoPanelSkeleton/ProjectBugInfoPanelSkeleton'
+import IssueSkeleton from '@/components/UI/Issue/IssueSkeleton/IssueSkeleton'
 
 interface ProjectProps {
 	params: {
@@ -17,24 +17,23 @@ interface ProjectProps {
 export default async function Project({ params }: ProjectProps) {
 	const { id } = params
 
-	const data = await getProjectData(id)
-
 	return (
 		<div>
 			<Margin height={50} />
-			<Suspense fallback={<Spinner color="black" />}>
+			<Suspense fallback={<ProjectBugInfoPanelSkeleton id={id} />}>
 				<GenerateProjectHeader id={id} />
 			</Suspense>
+
 			<Margin height={30} />
-			<H2>Issues</H2>
+			<H2>Open issues</H2>
 			<Margin height={20} />
-			<Suspense fallback={<Spinner color="black" />}>
+			<Suspense fallback={<IssueSkeleton count={8} />}>
 				<GenerateOpenIssues id={id} />
 			</Suspense>
 			<Margin height={30} />
 			<H2>Closed issues</H2>
 			<Margin height={20} />
-			<Suspense fallback={<Spinner color="black" />}>
+			<Suspense fallback={<IssueSkeleton count={8} />}>
 				<GenerateClosedIssues id={id} />
 			</Suspense>
 		</div>
