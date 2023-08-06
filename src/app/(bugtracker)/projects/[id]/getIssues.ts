@@ -12,6 +12,9 @@ export default async function getIssues(projectId: string, isOpen = true) {
 			isOpen,
 			projectId,
 		},
+		orderBy: {
+			createdAt: 'desc',
+		},
 	})
 
 	return openIssues

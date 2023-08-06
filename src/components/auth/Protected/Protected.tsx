@@ -14,7 +14,7 @@ export default function Protected({ user, redirectTo }: ProtectedProps) {
 	const isAuthenticated = !!session
 
 	if (status == 'loading') {
-		return <Spinner color="black" />
+		return null
 	}
 
 	if (!isAuthenticated && user == 'only-authenticated') {

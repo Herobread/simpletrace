@@ -20,7 +20,7 @@ export default async function newIssue(projectId: string, data: NewIssueProps) {
 	}
 
 	try {
-		await prisma.issue.create({
+		const issue = await prisma.issue.create({
 			data: {
 				title,
 				description,
@@ -34,7 +34,7 @@ export default async function newIssue(projectId: string, data: NewIssueProps) {
 
 		revalidatePath('/projects/[id]')
 
-		return
+		return issue
 	} catch (error: any) {
 		console.error(error)
 

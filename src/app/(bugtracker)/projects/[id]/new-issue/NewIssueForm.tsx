@@ -35,14 +35,16 @@ export default function NewIssueForm({ id }: NewIssueFormProps) {
 		setError('')
 
 		try {
-			await newIssue(id, data)
+			const issue = await newIssue(id, data)
 			router.refresh()
-			router.push('')
+
+			const issueId = issue.id
+
+			router.push(`/projects/${id}/${issueId}`)
 		} catch (error: any) {
 			setError(error.message)
+			setIsLoading(false)
 		}
-
-		setIsLoading(false)
 	}
 
 	return (
