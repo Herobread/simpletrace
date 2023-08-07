@@ -6,6 +6,7 @@ import GenerateOpenIssues from './GenerateOpenIssues'
 import GenerateClosedIssues from './GenerateClosedIssues'
 import ProjectBugInfoPanelSkeleton from '@/components/UI/ProjectBugInfoPanel/ProjectBugInfoPanelSkeleton/ProjectBugInfoPanelSkeleton'
 import IssueSkeleton from '@/components/UI/Issue/IssueSkeleton/IssueSkeleton'
+import ProjectNavBar from '@/components/UI/ProjectNavBar/ProjectNavBar'
 
 interface ProjectProps {
 	params: {
@@ -18,12 +19,6 @@ export default async function Project({ params }: ProjectProps) {
 
 	return (
 		<div>
-			<Margin height={50} />
-			<Suspense fallback={<ProjectBugInfoPanelSkeleton id={id} />}>
-				<GenerateProjectHeader id={id} />
-			</Suspense>
-
-			<Margin height={30} />
 			<H2>Open issues</H2>
 			<Margin height={20} />
 			<Suspense fallback={<IssueSkeleton count={8} />}>
