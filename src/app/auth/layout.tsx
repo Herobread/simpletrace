@@ -12,6 +12,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
 		<div className={s.container}>
 			<Image
 				src={loginArt}
+				placeholder="blur"
 				alt=""
 				className={s.image}
 				draggable="false"
