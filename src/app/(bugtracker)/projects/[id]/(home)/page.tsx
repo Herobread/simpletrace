@@ -18,7 +18,7 @@ export default async function Project({ params }: ProjectProps) {
 	const { id } = params
 
 	return (
-		<div>
+		<>
 			<H2>Open issues</H2>
 			<Margin height={20} />
 			<Suspense fallback={<IssueSkeleton count={8} />}>
@@ -30,6 +30,6 @@ export default async function Project({ params }: ProjectProps) {
 			<Suspense fallback={<IssueSkeleton count={8} />}>
 				<GenerateClosedIssues id={id} />
 			</Suspense>
-		</div>
+		</>
 	)
 }
