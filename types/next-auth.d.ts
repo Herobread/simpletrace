@@ -8,12 +8,11 @@ declare module 'next-auth' {
 	interface Session {
 		user: {
 			id: string
-			// name?: string | null
+			firstName: string
+			lastName: string
 			username: string
 			password: string
-			// email?: string | null
-			// emailVerified?: Date | null
-			// image?: string | null
+			projectsNumber: number
 			// accounts: Account[]
 			// UserProject: UserProject[]
 		}

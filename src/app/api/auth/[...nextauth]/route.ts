@@ -1,3 +1,4 @@
+import getUserInfo from '@/app/actions/getUserData'
 import { prisma } from '@/lib/prisma'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import NextAuth, { AuthOptions } from 'next-auth'
@@ -47,9 +48,25 @@ export const authOptions: AuthOptions = {
 	callbacks: {
 		// update values, that are returned by useSession()
 		async session({ session, token }) {
-			session.user.id = token.sub || ''
+			if (!token) return session
 
-			return session
+			session.user.id = token.sub || ''
+			const userData = await getUserInfo(session.user.id)
+
+			if (!userData) return session
+
+			const updatedUser = {
+				id: userData.id || '',
+				firstName: userData.firstName || '',
+				lastName: userData.lastName || '',
+				username: userData.username || '',
+				password: userData.password || '',
+				projectsNumber: userData.projectsNumber || 0,
+			}
+
+			session.user = { ...updatedUser }
+
+			return { ...session, user: { ...updatedUser } }
 		},
 	},
 }

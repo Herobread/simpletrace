@@ -1,5 +1,3 @@
-import ProjectBugInfoPanel from '@/components/UI/ProjectBugInfoPanel/ProjectBugInfoPanel'
-import getProjectData from './getProjectData'
 import ErrorAlert from '@/components/UI/ErrorAlert/ErrorAlert'
 import getIssues from './getIssues'
 import Issue from '@/components/UI/Issue/Issue'
@@ -19,7 +17,7 @@ export default async function GenerateOpenIssues({
 		if (!openIssues.length) {
 			return (
 				<Paragraph>
-					No issues found, add some issues by pressing button above.
+					No issues found, add issue by pressing button above.
 				</Paragraph>
 			)
 		}

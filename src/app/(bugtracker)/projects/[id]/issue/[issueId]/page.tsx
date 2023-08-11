@@ -19,20 +19,17 @@ export default async function IssueView({ params }: IssueViewProps) {
 	const issueData = await getIssueInfo(issueId)
 
 	return (
-		<div>
-			<Margin height={50} />
+		<>
 			<Suspense fallback={<Spinner color="black" />}>
 				<H1>{issueData?.title}</H1>
-				<Margin height={30} />
+				<Margin height={20} />
 				<Paragraph>{issueData?.description}</Paragraph>
 				<Margin height={20} />
-				{/* {JSON.stringify(issueData)} */}
-				{/* update to fetch data inside */}
 			</Suspense>
 			<UpdateStatusButton
 				isOpen={issueData?.isOpen!}
 				issueId={issueData?.id!}
 			/>
-		</div>
+		</>
 	)
 }

@@ -40,7 +40,7 @@ export default function NewIssueForm({ id }: NewIssueFormProps) {
 
 			const issueId = issue.id
 
-			router.push(`/projects/${id}/${issueId}`)
+			router.push(`/projects/${id}/issue/${issueId}`)
 		} catch (error: any) {
 			setError(error.message)
 			setIsLoading(false)

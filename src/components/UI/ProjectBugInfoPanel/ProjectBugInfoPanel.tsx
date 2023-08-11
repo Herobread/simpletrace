@@ -32,7 +32,7 @@ export default function ProjectBugInfoPanel({
 					<Margin height={16} />
 					<Paragraph>{description}</Paragraph>
 					<Margin height={20} />
-					<Link href={`/projects/${id}/new-issue/`}>
+					<Link href={`/projects/${id}/new-issue`}>
 						<Button variant="accent">Open issue</Button>
 					</Link>
 				</div>

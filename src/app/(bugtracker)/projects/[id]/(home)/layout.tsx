@@ -7,6 +7,8 @@ import ProjectNavBar from '@/components/UI/ProjectNavBar/ProjectNavBar'
 
 interface ProjectsLayoutProps {
 	children: React.ReactNode
+	modal: React.ReactNode
+	issue: React.ReactNode
 	params: {
 		id: string
 	}
@@ -15,13 +17,14 @@ interface ProjectsLayoutProps {
 export default function ProjectsLayout({
 	children,
 	params,
+	issue,
+	modal,
 }: ProjectsLayoutProps) {
 	const { id } = params
 
 	return (
 		<>
 			<Protected redirectTo="/auth/login" user="only-authenticated" />
-
 			<Margin height={50} />
 			<Suspense fallback={<ProjectBugInfoPanelSkeleton id={id} />}>
 				<GenerateProjectHeader id={id} />
@@ -30,6 +33,8 @@ export default function ProjectsLayout({
 			<ProjectNavBar projectId={id} />
 			<Margin height={30} />
 			{children}
+			{issue}
+			{modal}
 		</>
 	)
 }

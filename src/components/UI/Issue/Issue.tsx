@@ -20,7 +20,7 @@ export default function Issue({
 }: IssueProps) {
 	return (
 		<Link
-			href={`/projects/${[projectId]}/${issueId}`}
+			href={`/projects/${[projectId]}/issue/${issueId}`}
 			className={s.container}
 		>
 			<div className={s.hero}>

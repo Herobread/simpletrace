@@ -1,12 +1,9 @@
 import Margin from '@/components/layout/Margin/Margin'
 import { Suspense } from 'react'
-import GenerateProjectHeader from './GenerateProjectHeader'
 import H2 from '@/components/UI/H2/H2'
 import GenerateOpenIssues from './GenerateOpenIssues'
 import GenerateClosedIssues from './GenerateClosedIssues'
-import ProjectBugInfoPanelSkeleton from '@/components/UI/ProjectBugInfoPanel/ProjectBugInfoPanelSkeleton/ProjectBugInfoPanelSkeleton'
 import IssueSkeleton from '@/components/UI/Issue/IssueSkeleton/IssueSkeleton'
-import ProjectNavBar from '@/components/UI/ProjectNavBar/ProjectNavBar'
 
 interface ProjectProps {
 	params: {
