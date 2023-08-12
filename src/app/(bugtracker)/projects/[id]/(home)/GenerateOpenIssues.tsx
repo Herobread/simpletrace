@@ -25,8 +25,10 @@ export default async function GenerateOpenIssues({
 		return (
 			<IssueContainer>
 				{openIssues.map((issue) => {
-					const { description, title } = issue
+					const { title, createdAt } = issue
 					const issueId = issue.id
+					let openedAt = createdAt.toLocaleString('en-UK')
+					let description = 'Opened at ' + openedAt
 
 					return (
 						<Issue

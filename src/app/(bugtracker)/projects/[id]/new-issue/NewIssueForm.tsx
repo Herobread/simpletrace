@@ -36,11 +36,12 @@ export default function NewIssueForm({ id }: NewIssueFormProps) {
 
 		try {
 			const issue = await newIssue(id, data)
-			router.refresh()
 
 			const issueId = issue.id
 
-			router.push(`/projects/${id}/issue/${issueId}`)
+			// router.push(`/projects/${id}/issue/${issueId}`)
+			router.push(`/projects/${id}`)
+			router.refresh()
 		} catch (error: any) {
 			setError(error.message)
 			setIsLoading(false)
