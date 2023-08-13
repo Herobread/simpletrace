@@ -26,6 +26,7 @@ export default async function IssueView({ params }: IssueViewProps) {
 				<Paragraph>{issueData?.description}</Paragraph>
 				<Margin height={20} />
 				<UpdateStatusButton
+					projectId={id}
 					isOpen={issueData?.isOpen!}
 					issueId={issueData?.id!}
 				/>

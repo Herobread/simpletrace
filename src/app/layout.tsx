@@ -9,6 +9,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
 	title: 'SimpleTrace',
 	description: 'bugtracker',
+	manifest: '/manifest.json',
 }
 
 export default function RootLayout({

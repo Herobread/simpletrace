@@ -8,9 +8,11 @@ import { useRouter } from 'next/navigation'
 interface UpdateStatusButtonProps {
 	issueId: string
 	isOpen: boolean
+	projectId: string
 }
 
 export default function UpdateStatusButton({
+	projectId,
 	isOpen,
 	issueId,
 }: UpdateStatusButtonProps) {
@@ -21,6 +23,7 @@ export default function UpdateStatusButton({
 		setisLoading(true)
 		try {
 			await updateIssue(issueId, { isOpen: !isOpen })
+			router.push(`/projects/${projectId}`)
 			router.refresh()
 		} catch (error: any) {}
 		setisLoading(false)
